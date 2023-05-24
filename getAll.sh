@@ -1,6 +1,8 @@
 #!/bin/bash
 
-for project in https://github.com/apache/commons-compress.git https://github.com/apache/commons-csv.git https://github.com/apache/commons-dbcp.git https://github.com/apache/commons-fileupload.git https://github.com/apache/commons-imaging.git https://github.com/apache/commons-io.git https://github.com/apache/commons-pool.git https://github.com/apache/commons-text.git https://github.com/FasterXML/jackson-core.git https://github.com/k9mail/k-9.git
+projects=$(cat biggestJavaProjectsClean.json | jq ".[] | .full_name" | tr -d "\"")
+
+for project in $projects
 do
 	git clone $project
 done
